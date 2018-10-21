@@ -1,1 +1,1 @@
-## google maps api training project
+## Google maps api training project

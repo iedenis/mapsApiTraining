@@ -13,13 +13,10 @@ const SupermarketSchema = mongoose.Schema({
         longitude: Number
     }
 },
-    { collection: 'Supermarkets' });
+    { collection: 'supermarkets' });
 
 let SupermarketModel = mongoose.model('Supermarkets', SupermarketSchema);
 
-SupermarketModel.getAll = () => {
-    return SupermarketModel.find({});
-}
 
 SupermarketModel.getSupermarketsByDistance = async (lat, lon, radius) => {
     let supermarkets = await SupermarketModel.find({});
@@ -30,13 +27,16 @@ SupermarketModel.getSupermarketsByDistance = async (lat, lon, radius) => {
     let supers = [superM];
     for (let i = 0; i < supermarkets.length; i++) {
         let dist = calcDistance(supermarkets[i].coordinates.latitude, supermarkets[i].coordinates.longitude, lat, lon);
+
         if (dist < 50) {
             supers[i] = {
                 name: supermarkets[i].name,
-                distance: dist
+                distance: Math.round(dist*100)/100
             }
+
         }
     }
+
     return supers.sort(SupermarketModel.compare);
 
 }

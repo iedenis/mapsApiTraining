@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-
-</head>
+<% include ./partials/head.html %>
 
 <body>
       <div class="container">
@@ -23,7 +20,7 @@
                               <%= supermarkets[i].name %>
                         </td>
                         <td>
-                              <%= supermarkets[i].distance %>
+                              <%= supermarkets[i].distance %> km
                         </td>
                   </tr>
                   <% } %>
@@ -31,9 +28,5 @@
       </table>
       </div>
 </body>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.3/angular-route.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-
+<% include ./partials/footer.html %>
 </html>

@@ -24,8 +24,14 @@ controller.getAll = async (req, res) => {
 
 controller.addSupermarket = async (req, res) => {
     let SupermarketToAdd = Supermarket({
-        name: req.body.name
+        name: req.body.data.name,
+        coordinates: {
+            latitude: req.body.data.latitude,
+            longitude: req.body.data.longitude
+        }
     });
+    console.log("super to add " + SupermarketToAdd);
+
     try {
         const savedSupermarket = await Supermarket.addSupermarket(SupermarketToAdd);
         logger.info('Adding Supermarket...');

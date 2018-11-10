@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 const SupermarketSchema = mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
+    //_id: mongoose.Schema.Types.ObjectId,
 
     name: {
         type: String,
@@ -31,21 +31,22 @@ SupermarketModel.getSupermarketsByDistance = async (lat, lon, radius) => {
         if (dist < 50) {
             supers[i] = {
                 name: supermarkets[i].name,
-                distance: Math.round(dist*100)/100
+                distance: Math.round(dist * 100) / 100
             }
 
         }
     }
 
     return supers.sort(SupermarketModel.compare);
-
 }
 
 SupermarketModel.compare = (a, b) => {
     return a.distance - b.distance;
 }
-SupermarketModel.addCar = (carToAdd) => {
-    return carToAdd.save();
+SupermarketModel.addSupermarket = (superMarketToAdd) => {
+    return superMarketToAdd.save()
+    .then()
+    .catch((err)=> console.log(err));
 }
 
 SupermarketModel.removeCar = (carName) => {
